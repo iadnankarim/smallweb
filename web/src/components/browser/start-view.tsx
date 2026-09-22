@@ -7,13 +7,13 @@ import { SiteTile } from "./site-tile";
 export function StartView({ sites, onOpen }: { sites: SiteSummary[]; onOpen: (address: string) => void }) {
   return (
     <div className="flex-1 overflow-y-auto">
-      <div className="mx-auto max-w-[760px] px-8 py-14">
+      <div className="px-16 pt-14 pb-20">
         <h1 className="text-[34px] font-semibold tracking-[-0.02em]">Where to?</h1>
         <p className="mt-2 max-w-[56ch] text-[15px] leading-relaxed text-subtle">
           Type an address in the bar above, search for words, or start at one of the {sites.length} sites on the small
           web. Everything you open from here builds your trail.
         </p>
-        <ul className="mt-8 grid grid-cols-2 gap-2">
+        <ul className="mt-8 grid grid-cols-3 gap-2">
           {sites.map((site) => (
             <li key={site.address}>
               <button
