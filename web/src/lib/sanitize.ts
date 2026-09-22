@@ -32,7 +32,7 @@ export function sanitizeAuthorHtml(dirty: string): SanitizeReport {
   });
 
   const removed: string[] = [];
-  for (const item of purifier.removed as Array<Record<string, unknown>>) {
+  for (const item of purifier.removed as unknown as Array<Record<string, unknown>>) {
     if ("element" in item && item.element instanceof Element) {
       removed.push(`<${item.element.nodeName.toLowerCase()}>`);
     } else if ("attribute" in item && item.attribute && "from" in item && item.from instanceof Element) {
