@@ -12,7 +12,7 @@ const ITEMS = [
   { href: "/publish", label: "Publish", icon: Plus },
 ] as const;
 
-export function MainNav({ historyCount }: { historyCount?: number }) {
+export function MainNav({ historyCount, collapsed = false }: { historyCount?: number; collapsed?: boolean }) {
   const pathname = usePathname();
 
   return (
@@ -24,18 +24,24 @@ export function MainNav({ historyCount }: { historyCount?: number }) {
             key={href}
             href={href}
             aria-current={active ? "page" : undefined}
+            title={collapsed ? label : undefined}
             className={cn(
               "flex h-[38px] items-center gap-2.5 rounded-[10px] border px-2.5 text-sm font-medium transition-colors",
               "focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+              collapsed && "justify-center px-0",
               active
                 ? "border-line bg-card text-ink shadow-[0_1px_2px_rgb(30_64_130/0.06)]"
                 : "border-transparent text-ink-2 hover:bg-white/60",
             )}
           >
             <Icon className={cn("size-[17px]", active ? "text-brand" : "text-subtle")} strokeWidth={1.8} />
-            {label}
-            {label === "History" && historyCount !== undefined && (
-              <span className="ml-auto font-mono text-xs text-subtle">{historyCount}</span>
+            {!collapsed && (
+              <>
+                {label}
+                {label === "History" && historyCount !== undefined && (
+                  <span className="ml-auto font-mono text-xs text-subtle">{historyCount}</span>
+                )}
+              </>
             )}
           </Link>
         );
