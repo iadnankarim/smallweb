@@ -1,0 +1,142 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design tokens for the Small Web browser (V2).
+ * shadcn/ui components read the standard variables (--background, --primary ...);
+ * our own components use the app tokens (ink, subtle, brand, ok, danger ...).
+ */
+:root {
+  --radius: 0.875rem;
+
+  --background: #edf2fa;
+  --foreground: #0b0d12;
+  --card: #ffffff;
+  --card-foreground: #0b0d12;
+  --popover: #ffffff;
+  --popover-foreground: #0b0d12;
+  --primary: #0b0d12;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f6fb;
+  --secondary-foreground: #0b0d12;
+  --muted: #f3f6fb;
+  --muted-foreground: #667085;
+  --accent: #eaf1ff;
+  --accent-foreground: #0b0d12;
+  --destructive: #b42318;
+  --border: #e4eaf3;
+  --input: #e4eaf3;
+  --ring: #2f6bf2;
+
+  --ink: #0b0d12;
+  --ink-2: #364152;
+  --subtle: #667085;
+  --faint: #98a2b3;
+  --line: #e4eaf3;
+  --soft: #f3f6fb;
+  --brand: #2f6bf2;
+  --brand-tint: #eaf1ff;
+  --brand-line: #d6e3fd;
+  --ok: #15803d;
+  --ok-tint: #ecfdf3;
+  --ok-line: #cdebd6;
+  --danger: #b42318;
+  --danger-tint: #fef3f2;
+  --danger-line: #f9d4cf;
+  --code: #0f1422;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, Menlo, monospace;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-subtle: var(--subtle);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-soft: var(--soft);
+  --color-brand: var(--brand);
+  --color-brand-tint: var(--brand-tint);
+  --color-brand-line: var(--brand-line);
+  --color-ok: var(--ok);
+  --color-ok-tint: var(--ok-tint);
+  --color-ok-line: var(--ok-line);
+  --color-danger: var(--danger);
+  --color-danger-tint: var(--danger-tint);
+  --color-danger-line: var(--danger-line);
+  --color-code: var(--code);
+
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --shadow-pill: 0 1px 2px rgb(30 64 130 / 0.05), 0 6px 18px rgb(30 64 130 / 0.06);
+  --shadow-card: 0 1px 2px rgb(30 64 130 / 0.04), 0 14px 36px rgb(30 64 130 / 0.08);
+  --shadow-cta: 0 6px 16px rgb(11 13 18 / 0.18);
+}
+
+/* The soft icy-blue backdrop behind the whole app. */
+@utility bg-app {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(900px 420px at 62% -8%, #d6e4fb 0%, rgb(214 228 251 / 0) 70%),
+    radial-gradient(700px 500px at -5% 105%, #e1eaf8 0%, rgb(225 234 248 / 0) 70%),
+    linear-gradient(180deg, #eef3fb 0%, #f4f7fc 100%);
+}
+
+/* Frosted panel used by the sidebar. */
+@utility glass {
+  background-color: rgb(255 255 255 / 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    @apply bg-app text-foreground font-sans antialiased;
+  }
+  ::selection {
+    background: var(--brand-tint);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
