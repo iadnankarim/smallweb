@@ -1,6 +1,6 @@
 "use client";
 
-import { Compass, PanelLeftClose, PanelLeftOpen, ShieldCheck } from "lucide-react";
+import { Compass, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { TrailPanel } from "@/components/browser/trail-panel";
 import { useBrowser } from "@/lib/browser/browser-provider";
@@ -68,23 +68,6 @@ export function Sidebar({ collapsed, onToggleCollapsed }: SidebarProps) {
       )}
 
       {collapsed && <div className="min-h-0 flex-1" />}
-
-      {!collapsed ? (
-        <div className="flex items-start gap-2.5 rounded-[14px] border border-ok-line bg-ok-tint p-3">
-          <ShieldCheck className="mt-px size-[18px] shrink-0 text-ok" strokeWidth={1.8} />
-          <div className="flex flex-col gap-0.5">
-            <span className="text-[13px] font-semibold text-[#14532D]">Pages are sandboxed</span>
-            <span className="text-xs leading-snug text-[#276749]">No author scripts, forms or frames reach this app.</span>
-          </div>
-        </div>
-      ) : (
-        <div
-          className="flex items-center justify-center rounded-[14px] border border-ok-line bg-ok-tint p-2.5"
-          title="Pages are sandboxed — no author scripts, forms or frames reach this app."
-        >
-          <ShieldCheck className="size-[18px] text-ok" strokeWidth={1.8} />
-        </div>
-      )}
     </aside>
   );
 }
