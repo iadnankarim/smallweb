@@ -25,5 +25,3 @@ cp .env.example .env.local   # set NEXT_PUBLIC_API_URL=http://localhost:4000 to 
 npm install
 npm run dev
 ```
-
-Leaving `NEXT_PUBLIC_API_URL` empty runs the browser against an in-memory mock of the same seed data, no backend needed.
