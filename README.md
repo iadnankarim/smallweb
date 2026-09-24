@@ -15,7 +15,7 @@ npm run seed                 # deterministic — safe to run again, never double
 npm run start:dev
 ```
 
-API docs (Swagger, for manual testing): http://localhost:4000/docs
+API docs (Swagger, for manual testing): https://smallweb-api.vercel.app/docs
 
 ## Run the web
 
